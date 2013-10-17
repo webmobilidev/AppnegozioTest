@@ -34,12 +34,12 @@
 <body data-tp="14900" data-db="test">
     <div id="fb-root"></div>
     <div data-role="page" id="foo">
-        <header data-role="header" id="header">
-            <a href="#panelleft" id="buttonleft" data-iconpos="notext" data-icon="bars"
-                data-corners="true" data-shadow="true"></a>
+        <header data-role="header" id="header" >
+            <a href="#panelleft" id="buttonleft" data-iconpos="notext" data-icon="search"
+                data-corners="true" data-shadow="true" style="position:absolute"></a>
             <h1 class="ui-title"></h1>
-            <a href="#bar" id="buttonright" data-iconpos="notext" data-transition="slideup"
-                data-icon="grid" data-corners="true" data-shadow="true"></a>
+            <a href="#panelright" id="buttonright" data-iconpos="notext"
+                data-icon="bars" data-corners="true" data-shadow="true"></a>
         </header>
 
         <aside data-role="panel" id="panelleft" data-theme="a">
@@ -52,18 +52,7 @@
         </aside>
 
         <footer data-role="footer" id="footer" class="fullTextBar">
-            <table>
-                <tr>
-                    <td>
-                        <input type="search" name="fulltext" id="search" value="" data-mini="true"
-                        placeholder="Cerca..." onkeydown="tp.FullTextSearchEnterPressed(this)">
-                    </td>
-                    <td>
-                        <a href="javascript:tp.FullTextSearchButtonPressed('search')" data-role="button"
-                        data-icon="search" data-iconpos="notext">Search</a>
-                    </td>
-                </tr>
-            </table>
+            
         </footer>
     </div>
 
