@@ -18,7 +18,7 @@
       // <!--
 			document.addEventListener("deviceready", function() {
 				navigator.splashscreen.hide();
-				if ((navigator.connection.type == Connection.NONE) || (navigator.connection.type == Connection.UNKNOWN) )
+				if (navigator.connection.type == Connection.NONE)
 					location.href = "no_connection.html";
 			}, false);
       // -->
