@@ -29,8 +29,8 @@
 
 			function onDeviceReady() {			
 					alert("ready");
-					alert("type: " + navigator.network.connection.type);
-				if (navigator.network.connection.type == Connection.NONE)
+					alert("type: " + navigator.connection.type);
+				if (navigator.connection.type == Connection.NONE)
 					{
 						alert("no conn");
 						navigator.splashscreen.hide();
