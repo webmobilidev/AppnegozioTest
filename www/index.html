@@ -25,16 +25,14 @@
 			// device APIs are available
 			//
 			function onDeviceReady() {
-				document.addEventListener("offline", onOffline, false);
-				alert("DeviceReady");
-				checkConnection();
-				
-				
-				/*if (navigator.connection.type == Connection.NONE)
+				document.addEventListener("offline", onOffline, false);				
+				//checkConnection();
+								
+				if (navigator.connection.type == 0)
 					{
-						alert("DeviceReady");
+						alert("no conn");
 						location.href = "no_connection.html";
-					}*/
+					}
 			}
 			
 			function checkConnection() {
