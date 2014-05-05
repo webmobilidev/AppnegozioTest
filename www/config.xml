@@ -8,7 +8,7 @@
         Global Product Channel
     </author>
     
-	 <gap:plugin name="org.apache.cordova.device" />
+	<gap:plugin name="org.apache.cordova.device" />
 	
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />

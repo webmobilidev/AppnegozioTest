@@ -29,10 +29,10 @@
 
 			function onDeviceReady() {			
 					alert("DeviceReady");	
-				if (navigator.connection.type == Connection.NONE)
+				if (navigator.network.connection.type == Connection.NONE)
 					{
 						alert("no conn");
-						//navigator.splashscreen.hide();
+						navigator.splashscreen.hide();
 						location.href = "no_connection.html";
 					}
 			}
