@@ -19,23 +19,27 @@
 			// Wait for device API libraries to load
 			//
 			function onLoad() {
-				alert("Load");
 				document.addEventListener("deviceready", onDeviceReady, false);
 			}
 
 			// device APIs are available
 			//
 			function onDeviceReady() {
-				alert("DeviceReady");
 				document.addEventListener("offline", onOffline, false);
+				alert("DeviceReady");
+				if (navigator.connection.type == Connection.NONE)
+					{
+						alert("DeviceReady");
+						location.href = "no_connection.html";
+					}
 			}
 
 			// Handle the offline event
 			//
 			function onOffline() {
 				alert("Offline");
-				navigator.splashscreen.hide();
-				location.href = "no_connection.html";
+				//navigator.splashscreen.hide();
+				//location.href = "no_connection.html";
 			}
       // -->
     </script>
