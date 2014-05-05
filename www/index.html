@@ -24,15 +24,50 @@
 
 			// device APIs are available
 			//
+
 			function onDeviceReady() {
 				document.addEventListener("offline", onOffline, false);
+				//document.addEventListener("offline", onOffline, false);				
+				checkConnection();
+								
+				/*if (navigator.connection.type == 0)
+					{
+						alert("no conn");
+						location.href = "no_connection.html";
+					}*/
 			}
+			
+			function checkConnection() {
+<<<<<<< HEAD
+            var networkState = navigator.connection.type;
+			alert(Connection.type);
+			alert(connection.type);
+=======
+            var networkState = navigator.connection.type;	
+>>>>>>> 518c8089282a760a448a7df637a94a6d49d69652
+            var states = {};
+            states[Connection.UNKNOWN]  = 'Unknown connection';
+            states[Connection.ETHERNET] = 'Ethernet connection';
+            states[Connection.WIFI]     = 'WiFi connection';
+            states[Connection.CELL_2G]  = 'Cell 2G connection';
+            states[Connection.CELL_3G]  = 'Cell 3G connection';
+            states[Connection.CELL_4G]  = 'Cell 4G connection';
+            states[Connection.CELL]     = 'Cell generic connection';
+            states[Connection.NONE]     = 'No network connection';
+
+            alert('Connection type: ' + states[networkState]);
+        }
 
 			// Handle the offline event
 			//
 			function onOffline() {
+				alert("Offline");
+<<<<<<< HEAD
+=======
 				//navigator.splashscreen.hide();
 				location.href = "no_connection.html";
+>>>>>>> 518c8089282a760a448a7df637a94a6d49d69652
+				//location.href = "no_connection.html";
 			}
       // -->
     </script>
