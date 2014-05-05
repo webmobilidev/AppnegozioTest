@@ -29,7 +29,7 @@
 
 			function onDeviceReady() {			
 					alert("ready");
-					alert("type: " + navigator.connection.type);
+					alert("type: " + navigator.network.connection.type);
 				if (navigator.connection.type == Connection.NONE)
 					{
 						alert("no conn");

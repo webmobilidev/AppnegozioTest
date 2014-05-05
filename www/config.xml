@@ -7,7 +7,7 @@
     <author email="info@gpchannel.com" href="http://www.gpchannel.com">
         Global Product Channel
     </author>
-    
+    <feature name="http://api.phonegap.com/1.0/device" />
 	<gap:plugin name="org.apache.cordova.device" />
 	<plugin name="NetworkStatus" value="org.apache.cordova.NetworkManager"/>
     <preference name="permissions" value="none" />
