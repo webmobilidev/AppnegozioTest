@@ -36,9 +36,7 @@
 			}
 			
 			function checkConnection() {
-            var networkState = navigator.connection.type;
-			alert("Type: " + navigator.networkState);	
-			alert("No Type: " +navigator.connection.type);	
+            var networkState = navigator.connection.type;	
             var states = {};
             states[Connection.UNKNOWN]  = 'Unknown connection';
             states[Connection.ETHERNET] = 'Ethernet connection';
