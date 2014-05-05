@@ -20,6 +20,7 @@
 			//
 			function onLoad() {
 				document.addEventListener("deviceready", onDeviceReady, false);
+				alert("load");
 			}
 
 			// device APIs are available
@@ -27,7 +28,8 @@
 
 			function onDeviceReady() {
 				document.addEventListener("offline", onOffline, false);
-				//document.addEventListener("offline", onOffline, false);				
+				//document.addEventListener("offline", onOffline, false);
+				alert("ready");
 				checkConnection();
 								
 				/*if (navigator.connection.type == 0)
@@ -38,6 +40,7 @@
 			}
 			
 			function checkConnection() {
+			alert("check conn");
             alert('Connection type: ' + Connection.type);
 			alert('connection type: ' + connection.type);
         }
