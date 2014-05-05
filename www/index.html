@@ -19,19 +19,16 @@
 			// Wait for device API libraries to load
 			//
 			function onLoad() {
+				document.addEventListener("online", onOnline, false);
+				document.addEventListener("offline", onOffline, false);				
 				document.addEventListener("deviceready", onDeviceReady, false);
-				alert("load");
 			}
 
 			// device APIs are available
 			//
 
-			function onDeviceReady() {
-				document.addEventListener("offline", onOffline, false);
-				//document.addEventListener("offline", onOffline, false);
-				alert("ready");
-				checkConnection();
-								
+			function onDeviceReady() {			
+					alert("DeviceReady");	
 				/*if (navigator.connection.type == 0)
 					{
 						alert("no conn");
@@ -39,18 +36,18 @@
 					}*/
 			}
 			
-			function checkConnection() {
-			alert("check conn");
-            alert('Connection type: ' + Connection.type);
-			alert('connection type: ' + connection.type);
-        }
-
+			// Handle the online event
+			//
+			function onOnline() {
+				alert("onOnline");
+			}
+			
 			// Handle the offline event
 			//
 			function onOffline() {
 				alert("Offline");
 				//navigator.splashscreen.hide();
-				location.href = "no_connection.html";
+				//location.href = "no_connection.html";
 
 				//location.href = "no_connection.html";
 			}
