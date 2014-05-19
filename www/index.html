@@ -15,10 +15,10 @@
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript">
-      
+      alert("prima e navigator.connection.type = " + navigator.connection.type);
 	  document.addEventListener("deviceready", function() {
 				navigator.splashscreen.hide();
-				alert("prima e navigator.connection.type = " + navigator.connection.type);
+				alert("prima2 e navigator.connection.type = " + navigator.connection.type);
 				if (navigator.connection.type == Connection.NONE)
 					location.href = "no_connection.html";
 			}, false);
