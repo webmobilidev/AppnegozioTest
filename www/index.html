@@ -16,34 +16,34 @@
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript">
       
-	  // Wait for Cordova to load
-    // 
+	// Wait for device API libraries to load
+    //
     document.addEventListener("deviceready", onDeviceReady, false);
 
-    // Cordova is loaded and it is now safe to make calls Cordova methods
-    //location.href = "no_connection.html";
+    // device APIs are available
+    //
     function onDeviceReady() {
         checkConnection();
     }
 
-    function checkConnection() {
-        var networkState = navigator.connection.type;
+        function checkConnection() {
+            var networkState = navigator.connection.type;
 
-        var states = {};
-        states[Connection.UNKNOWN]  = 'Unknown connection';
-        states[Connection.ETHERNET] = 'Ethernet connection';
-        states[Connection.WIFI]     = 'WiFi connection';
-        states[Connection.CELL_2G]  = 'Cell 2G connection';
-        states[Connection.CELL_3G]  = 'Cell 3G connection';
-        states[Connection.CELL_4G]  = 'Cell 4G connection';
-        states[Connection.NONE]     = 'No network connection';
-		
-		//navigator.splashscreen.hide();
-		
-		if (states[networkState] == Connection.NONE)
+            var states = {};
+            states[Connection.UNKNOWN]  = 'Unknown connection';
+            states[Connection.ETHERNET] = 'Ethernet connection';
+            states[Connection.WIFI]     = 'WiFi connection';
+            states[Connection.CELL_2G]  = 'Cell 2G connection';
+            states[Connection.CELL_3G]  = 'Cell 3G connection';
+            states[Connection.CELL_4G]  = 'Cell 4G connection';
+            states[Connection.CELL]     = 'Cell generic connection';
+            states[Connection.NONE]     = 'No network connection';
+
+            alert('Connection type: ' + states[networkState]);
+			
+			if (navigator.connection.type == Connection.NONE)
 					location.href = "no_connection.html";
-        
-    }
+        }
 	  
     </script>
     <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/jquery-1.10.0.min.js"></script>
