@@ -40,7 +40,7 @@
 		
 		navigator.splashscreen.hide();
 		
-		if (navigator.connection.type == Connection.NONE)
+		if (states[networkState] == Connection.NONE)
 					location.href = "no_connection.html";
         
     }
