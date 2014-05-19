@@ -10,7 +10,10 @@
     
 	<gap:plugin name="org.apache.cordova.device" />
 	
-	<feature name="http://api.phonegap.com/1.0/network"/>
+	<feature name="NetworkStatus">
+		<param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+	</feature>
+	
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />

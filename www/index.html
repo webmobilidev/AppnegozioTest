@@ -15,33 +15,14 @@
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript">
-      // <!--
-			// Wait for device API libraries to load
-			//
-			function onLoad() {
-				//document.addEventListener("online", onOnline, false);
-				//document.addEventListener("offline", onOffline, false);				
-				document.addEventListener("deviceready", onDeviceReady, false);
-			}
-
-			// device APIs are available
-			//
-
-			function onDeviceReady() {			
-					alert("ready");
-					alert("type: " + navigator.connection.type);
+      
+	  document.addEventListener("deviceready", function() {
+				navigator.splashscreen.hide();
+				alert("prima e navigator.connection.type = " + navigator.connection.type);
 				if (navigator.connection.type == Connection.NONE)
-					{
-						alert("no conn");
-						navigator.splashscreen.hide();
-						location.href = "no_connection.html";
-					}
-			}
-			
-			
-				
-				
-      // -->
+					location.href = "no_connection.html";
+			}, false);
+	  
     </script>
     <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/jquery-1.10.0.min.js"></script>
     <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/MobileGlobals.js"></script>
@@ -51,7 +32,7 @@
     <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/klass.min.js" defer="defer"></script>
     <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/code.photoswipe.jquery-3.0.5.min.js" defer="defer"></script>
 </head>
-<body data-tp="14900" data-db="test" onload="onLoad()">
+<body data-tp="14900" data-db="test">
     <div id="fb-root"></div>
     <div data-role="page" id="foo">
         <header data-role="header" id="header" data-position="fixed">
