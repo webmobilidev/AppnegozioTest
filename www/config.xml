@@ -10,7 +10,7 @@
     
 	<gap:plugin name="org.apache.cordova.device" />
 	<gap:plugin name="org.apache.cordova.network-information" />
-	
+	<gap:plugin name="org.apache.cordova.inappbrowser" />
 	
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />
