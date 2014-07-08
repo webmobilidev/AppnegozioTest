@@ -2,7 +2,7 @@
 <widget id="com.gpc.Appnegozio" version="1.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>AppnegozioTest</name>
     <description>
-      TEST-scroll  La tua vetrina on-line su smartphone e tablet. Da oggi puoi mantenere la relazione con il tuo cliente anche fuori dal negozio.
+      TEST-scroll4  La tua vetrina on-line su smartphone e tablet. Da oggi puoi mantenere la relazione con il tuo cliente anche fuori dal negozio.
     </description>
     <author email="info@gpchannel.com" href="http://www.gpchannel.com">
         Global Product Channel
@@ -16,7 +16,7 @@
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="true" />
-    <preference name="webviewbounce" value="true" />
+    <preference name="UIWebViewBounce" value="false" />
 	<preference name="DisallowOverscroll" value="true" />
     <preference name="prerendered-icon" value="true" />
     <preference name="stay-in-webview" value="false" />
