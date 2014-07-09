@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="http://mobiletest.wm4pr.com/Content/Mobile.css" />
 
     <script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="PushNotification.js"></script>
     <script type="text/javascript">
       
 	// Wait for device API libraries to load
@@ -24,6 +25,7 @@
     //
     function onDeviceReady() {
         checkConnection();
+		showAlert();
     }
 
         function checkConnection() {
@@ -44,6 +46,22 @@
 			if (navigator.connection.type == Connection.NONE)
 					location.href = "no_connection.html";
         }
+		
+		// alert dialog dismissed
+        function alertDismissed() {
+            // do something
+        }
+
+    // Show a custom alertDismissed
+    //		
+		function showAlert() {
+        navigator.notification.alert(
+            'Test notifica!',  // message
+            alertDismissed,         // callback
+            'Notifica',            // title
+            'OK'                  // buttonName
+        );
+    }
 	  
     </script>
     <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/jquery-1.10.0.min.js"></script>
