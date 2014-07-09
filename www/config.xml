@@ -12,7 +12,13 @@
 	<gap:plugin name="org.apache.cordova.network-information" />
 	<gap:plugin name="org.apache.cordova.inappbrowser" />
 	
-	<gap:plugin name="org.apache.cordova.dialogs.Notification" />
+	<feature name="Notification">
+		<param name="ios-package" value="CDVNotification" />
+	</feature>
+	<feature name="Notification">
+		<param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+	</feature>
+	
 	<gap:plugin name="com.phonegap.plugins.pushplugin" />
 	
     <preference name="permissions" value="none" />
