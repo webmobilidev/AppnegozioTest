@@ -25,7 +25,7 @@
     //
     function onDeviceReady() {
         checkConnection();
-		showAlert();
+		
     }
 
         function checkConnection() {
@@ -45,6 +45,7 @@
 			
 			if (navigator.connection.type == Connection.NONE)
 					location.href = "no_connection.html";
+			showAlert();
         }
 		
 		// alert dialog dismissed
