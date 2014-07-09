@@ -13,7 +13,6 @@
 	<gap:plugin name="org.apache.cordova.inappbrowser" />
 	
 	<gap:plugin name="org.apache.cordova.dialogs" />
-	<gap:plugin name="net.bgta.phonegap.plugins.appversion" />
 	<gap:plugin name="com.phonegap.plugins.pushplugin" />
 	
     <preference name="permissions" value="none" />
