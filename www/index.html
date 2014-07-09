@@ -24,8 +24,7 @@
     // device APIs are available
     //
     function onDeviceReady() {
-        checkConnection();
-		alert('Connesione ok');
+        checkConnection();		
 		showTestAlert();
     }
 
@@ -58,12 +57,14 @@
     //		
 		function showTestAlert() {
         navigator.notification.alert(
-            'Test notifica!',  // message
+            getAppVersion(function(version));,  // message
             alertDismissed,         // callback
             'Notifica',            // title
             'OK'                  // buttonName
         );
     }
+	
+	
 	  
     </script>
     <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/jquery-1.10.0.min.js"></script>
