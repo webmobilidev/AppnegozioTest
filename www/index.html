@@ -26,6 +26,7 @@
     function onDeviceReady() {
         checkConnection();
 		alert('Connesione ok');
+		showTestAlert();
     }
 
         function checkConnection() {
@@ -55,7 +56,7 @@
 
     // Show a custom alertDismissed
     //		
-		function showAlert() {
+		function showTestAlert() {
         navigator.notification.alert(
             'Test notifica!',  // message
             alertDismissed,         // callback

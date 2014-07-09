@@ -2,7 +2,7 @@
 <widget id="com.gpc.Appnegozio" version="1.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>AppnegozioTest</name>
     <description>
-      TEST-Notification 5  La tua vetrina on-line su smartphone e tablet. Da oggi puoi mantenere la relazione con il tuo cliente anche fuori dal negozio.
+      TEST-Notification 6  La tua vetrina on-line su smartphone e tablet. Da oggi puoi mantenere la relazione con il tuo cliente anche fuori dal negozio.
     </description>
     <author email="info@gpchannel.com" href="http://www.gpchannel.com">
         Global Product Channel
@@ -12,12 +12,7 @@
 	<gap:plugin name="org.apache.cordova.network-information" />
 	<gap:plugin name="org.apache.cordova.inappbrowser" />
 	
-	<feature name="Notification">
-		<param name="ios-package" value="CDVNotification" />
-	</feature>
-	<feature name="Notification">
-		<param name="android-package" value="org.apache.cordova.dialogs.Notification" />
-	</feature>
+	<gap:plugin name="org.apache.cordova.dialogs" />
 	
 	<gap:plugin name="com.phonegap.plugins.pushplugin" />
 	
