@@ -12,7 +12,7 @@
 	<gap:plugin name="org.apache.cordova.network-information" />
 	<gap:plugin name="org.apache.cordova.inappbrowser" />
 	
-	<gap:plugin name="org.apache.cordova.core.Notification" />
+	<gap:plugin name="org.apache.cordova.dialogs.Notification" />
 	<gap:plugin name="com.phonegap.plugins.pushplugin" />
 	
     <preference name="permissions" value="none" />
