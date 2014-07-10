@@ -25,7 +25,11 @@
     //
     function onDeviceReady() {
         checkConnection();		
-		showTestAlert();
+		/*try {
+				var pushNotification = window.plugins.pushNotification;
+				pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"--SENDER ID FROM GOOGLE--","ecb":"app.onNotificationGCM"});
+			} catch (ex) { alert('error: ' + ex); }
+			*/
     }
 
         function checkConnection() {
@@ -47,24 +51,7 @@
 					location.href = "no_connection.html";
 			
         }
-		
-		// alert dialog dismissed
-        function alertDismissed() {
-            // do something
-        }
 
-    // Show a custom alertDismissed
-    //		
-		function showTestAlert() {
-        navigator.notification.alert(
-            'Notifica testo',  // message
-            alertDismissed,         // callback
-            'Notifica',            // title
-            'OK'                  // buttonName
-        );
-    }
-	
-	
 	  
     </script>
     <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/jquery-1.10.0.min.js"></script>
