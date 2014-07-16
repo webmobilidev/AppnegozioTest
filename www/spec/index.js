@@ -44,9 +44,13 @@ describe('app', function() {
     });
 
     describe('receivedEvent', function() {
+	
+		successHandler: function(result) {alert('Callback Success! Result = '+result);}
+		
+		errorHandler:function(error) {alert(error);}
 
 		var pushNotification = window.plugins.pushNotification;
-		pushNotification.register(successHandler: function(result) {alert('Callback Success! Result = '+result)},errorHandler:function(error) {alert(error);},{"senderID":"598711461153","ecb":"app.onNotificationGCM"});
+		pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"598711461153","ecb":"app.onNotificationGCM"});
         
 		beforeEach(function() {
             var el = document.getElementById('stage');
