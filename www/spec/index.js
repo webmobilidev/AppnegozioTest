@@ -44,7 +44,8 @@ describe('app', function() {
     });
 
     describe('receivedEvent', function() {
-	
+		alert("receivedEvent");
+		
 		successHandler: function(result) {alert('Callback Success! Result = '+result);}
 		
 		errorHandler:function(error) {alert(error);}
@@ -52,6 +53,8 @@ describe('app', function() {
 		var pushNotification = window.plugins.pushNotification;
 		pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"598711461153","ecb":"app.onNotificationGCM"});
         
+		alert("dopo var pusnot");
+		
 		beforeEach(function() {
             var el = document.getElementById('stage');
             el.innerHTML = ['<div id="deviceready">',
@@ -74,6 +77,7 @@ describe('app', function() {
     });
 	
 	onNotificationGCM: function(e) {
+		alert("onNotificationGCM");
         switch( e.event )
         {
             case 'registered':
