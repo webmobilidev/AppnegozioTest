@@ -41,7 +41,6 @@
         
 		alert("dopo var pusnot");
 	
-    }
 		onNotificationGCM: function(e) {
 		alert("onNotificationGCM");
         switch( e.event )
@@ -66,10 +65,10 @@
             default:
               alert('An unknown GCM event has occurred');
               break;
-        }
+			}
+		}
     }
-
-
+		
         function checkConnection() {
             var networkState = navigator.connection.type;
 
