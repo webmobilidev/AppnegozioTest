@@ -19,8 +19,10 @@
 describe('app', function() {
     describe('initialize', function() {
         it('should bind deviceready', function() {
+		alert("bind receivedEvent");
             runs(function() {
                 spyOn(app, 'onDeviceReady');
+				alert("spy receivedEvent");
                 app.initialize();
                 helper.trigger(window.document, 'deviceready');
             });
@@ -39,6 +41,7 @@ describe('app', function() {
         it('should report that it fired', function() {
             spyOn(app, 'receivedEvent');
             app.onDeviceReady();
+			alert("deviceready");
             expect(app.receivedEvent).toHaveBeenCalledWith('deviceready');
         });
     });
