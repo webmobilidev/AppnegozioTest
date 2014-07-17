@@ -59,7 +59,6 @@
             
             function onDeviceReady() {
                 $("#app-status-ul").append('<li>deviceready event received</li>');
-                alert('<li>deviceready event received</li>');
 				document.addEventListener("backbutton", function(e)
 				{
                 	$("#app-status-ul").append('<li>backbutton event received</li>');
@@ -155,12 +154,14 @@
 								$("#app-status-ul").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
 								$("#app-status-ul").append('<li>URL -> MSG: ' + e.payload.url + '</li>');
 							}
-							else
+							else{
 							$("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
+							$("#app-status-ul").append('<li>URL -> MSG: ' + e.payload.url + '</li>');
+							}
 						}
 
 						$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
-						
+						$("#app-status-ul").append('<li>URL -> MSG: ' + e.payload.url + '</li>');
                         //android only
 						$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
                         //amazon-fireos only
