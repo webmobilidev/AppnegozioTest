@@ -158,6 +158,7 @@
 						}
 
 						$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
+						$("#app-status-ul").append('<li>URL -> MSG: ' + e.payload.url + '</li>').tp.Manufacturers('all');
                         //android only
 						$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
                         //amazon-fireos only
