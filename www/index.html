@@ -151,14 +151,16 @@
 						}
 						else
 						{	// otherwise we were launched because the user touched a notification in the notification tray.
-							if (e.coldstart)
+							if (e.coldstart){
 								$("#app-status-ul").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
+								$("#app-status-ul").append('<li>URL -> MSG: ' + e.payload.url + '</li>');
+							}
 							else
 							$("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
 						}
 
 						$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
-						$("#app-status-ul").append('<li>URL -> MSG: ' + e.payload.url + '</li>').tp.Manufacturers('all');
+						
                         //android only
 						$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
                         //amazon-fireos only
