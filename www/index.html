@@ -62,6 +62,15 @@
     <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/klass.min.js" defer="defer"></script>
     <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/code.photoswipe.jquery-3.0.5.min.js" defer="defer"></script>
 	<script type="text/javascript">
+			function sendRegID() {
+			$.ajax({
+			  type: "GET",
+			  url: 'http://mobiletest.wm4pr.com/Home/SalvaRegID/' + tpID + '//' + $("#regID").text(),
+			  dataType: "html",
+			  crossDomain: true,
+			  success: alert("Funziona!?" + $("#regID").children() + " - http://mobiletest.wm4pr.com/Home/SalvaRegID/" + tpID + '//' + $("#regID").children())
+			});
+		  }
             var pushNotification;
             
             function onDeviceReady() {
@@ -130,12 +139,13 @@
                     case 'registered':
 					if ( e.regid.length > 0 )
 					{
-						$("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
+						$("#app-status-ul").append('<li id="regID">REGISTERED -> REGID:' + e.regid + "</li>");
 						// Your GCM push server needs to know the regID before it can push to this device
 						// here is where you might want to send it the regID for later use.
 						console.log("regID = " + e.regid);
 						$("#regID").append("<p>regID = " + e.regid + "</p>");
 						$("#content").append("<p>regID = " + e.regid + "</p>");
+						sendRegID();
 					}
                     break;
                     
