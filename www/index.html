@@ -68,7 +68,10 @@
 			  url: 'http://mobiletest.wm4pr.com/Home/SalvaRegID/' + tpID + '/' + text,
 			  dataType: "html",
 			  crossDomain: true,
-			  success: alert('http://mobiletest.wm4pr.com/Home/SalvaRegID/' + tpID + '/' + text)
+			  success: alert('http://mobiletest.wm4pr.com/Home/SalvaRegID/' + tpID + '/' + text),
+			  error: function(XMLHttpRequest, textStatus, errorThrown) { 
+				alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+				}
 			});
 		  }
             var pushNotification;
