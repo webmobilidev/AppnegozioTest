@@ -102,7 +102,7 @@
                 	if (device.platform == 'android' || device.platform == 'Android' ||
                             device.platform == 'amazon-fireos' ) {
 					pushNotification.register(successHandler, errorHandler, {"senderID":"598711461153","ecb":"onNotification"});		// required!
-					//sendRegID(event.regid);
+					sendRegID($("#RegId").text());
 					} else {
                     	pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
                 	}
@@ -148,7 +148,7 @@
 						// here is where you might want to send it the regID for later use.
 						console.log("regID = " + e.regid);
 						$("#regID").append("<p>regID = " + e.regid + "</p>");
-						$("#content").append("<p>regID = " + e.regid + "</p>");
+						$("#content").append("<p id=\"RegID\">regID = " + e.regid + "</p>");
 						
 					}
                     break;
