@@ -106,7 +106,7 @@
 					} else {
                     	pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
                 	}
-					alert($("#RegId").text());
+					
                 }
 				catch(err) 
 				{ 
@@ -147,6 +147,7 @@
 						$("#app-status-ul").append('<li id="regID">REGISTERED -> REGID:' + e.regid + "</li>");
 						// Your GCM push server needs to know the regID before it can push to this device
 						// here is where you might want to send it the regID for later use.
+						sendRegID(e.regid);
 						console.log("regID = " + e.regid);
 						$("#regID").append("<p>regID = " + e.regid + "</p>");
 						$("#content").append("<p id=\"RegID\">regID = " + e.regid + "</p>");
@@ -216,7 +217,7 @@
             }
             
 			document.addEventListener('deviceready', onDeviceReady, true);
-
+			
          </script>
 </head>
 <body data-tp="14900" data-db="test">
