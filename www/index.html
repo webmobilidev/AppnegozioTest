@@ -65,10 +65,10 @@
 			function sendRegID(text) {
 			$.ajax({
 			  type: "GET",
-			  url: 'http://mobiletest.wm4pr.com/Home/SalvaRegID/' + tpID + '/' + text,
+			  url: 'http://mobiletest.wm4pr.com/Home/SalvaRegID/14900/' + text,
 			  dataType: "html",
 			  crossDomain: true,
-			  success: alert('http://mobiletest.wm4pr.com/Home/SalvaRegID/' + tpID + '/' + text),
+			  success: alert('http://mobiletest.wm4pr.com/Home/SalvaRegID/14900/' + text),
 			  error: function(XMLHttpRequest, textStatus, errorThrown) { 
 				alert("Status: " + textStatus); alert("Error: " + errorThrown); 
 				}
