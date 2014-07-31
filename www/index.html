@@ -68,7 +68,10 @@
 			  url: 'http://mobiletest.wm4pr.com/Home/SalvaRegID/14900/' + text,
 			  dataType: "html",
 			  crossDomain: true,
-			  success: alert('http://mobiletest.wm4pr.com/Home/SalvaRegID/14900/' + text),
+			  success: function() { 
+				window.localStorage.setItem("RegID", 1);
+				alert("Registrato");
+			  },
 			  error: function(XMLHttpRequest, textStatus, errorThrown) { 
 				alert("Status: " + textStatus); alert("Error: " + errorThrown); 
 				}
@@ -147,7 +150,11 @@
 						$("#app-status-ul").append('<li id="regID">REGISTERED -> REGID:' + e.regid + "</li>");
 						// Your GCM push server needs to know the regID before it can push to this device
 						// here is where you might want to send it the regID for later use.
-						sendRegID(e.regid);
+						var reg = window.localStorage.getItem("RegID");
+						
+						if(reg != 1)
+							sendRegID(e.regid);
+						
 						console.log("regID = " + e.regid);
 						$("#regID").append("<p>regID = " + e.regid + "</p>");
 						$("#content").append("<p id=\"RegID\">regID = " + e.regid + "</p>");
