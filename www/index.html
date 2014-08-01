@@ -80,10 +80,10 @@
             var pushNotification;
             
             function onDeviceReady() {
-                $("#app-status-ul").append('<li>deviceready event received</li>');
+                /*$("#app-status-ul").append('<li>deviceready event received</li>');
 				document.addEventListener("backbutton", function(e)
 				{
-                	//$("#app-status-ul").append('<li>backbutton event received</li>');
+                	$("#app-status-ul").append('<li>backbutton event received</li>');
   					$( "#backbuttonPopup" ).popup();
       				if( $("#home").length > 0)
 					{
@@ -96,7 +96,7 @@
 					{
 						navigator.app.backHistory();
 					}
-				}, false);
+				}, false);*/
 
 				try 
 				{ 
@@ -289,7 +289,7 @@
 	    </section>
     </div>
 	
-	<div data-role="popup" id="backbuttonPopup" style="display:none">
+	<div data-role="popup" id="backbuttonPopup">
 		<div data-role="content">
 			<h3 class="ui-title">Are you sure you want to delete this page?</h3>
 			<p>This action cannot be undone.</p>
