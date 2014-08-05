@@ -12,6 +12,9 @@
 	<gap:plugin name="org.apache.cordova.network-information" />
 	<gap:plugin name="org.apache.cordova.inappbrowser" />
 	<gap:plugin name="com.phonegap.plugins.pushplugin" />
+	<feature name="PushPlugin">
+		<param name="ios-package" value="PushPlugin" />
+	</feature>
 	
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />
