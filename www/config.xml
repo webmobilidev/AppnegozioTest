@@ -18,6 +18,9 @@
 	<feature name="PushPlugin">
 		<param name="ios-package" value="PushPlugin" />
 	</feature>
+	<feature name="Notification">
+		<param name="ios-package" value="CDVNotification" />
+	</feature>
 	
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />
