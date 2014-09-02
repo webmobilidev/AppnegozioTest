@@ -65,7 +65,7 @@
 			function sendRegID(text) {
 			$.ajax({
 			  type: "GET",
-			  url: 'http://mobiletest.wm4pr.com/Home/SalvaRegID/14900/' + text + '&' + device.platform,
+			  url: 'http://mobiletest.wm4pr.com/Home/SalvaRegID/14900/' + text + '-' + device.platform,
 			  dataType: "html",
 			  crossDomain: true,
 			  success: function() { 
