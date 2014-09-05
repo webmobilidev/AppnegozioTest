@@ -61,11 +61,12 @@
     <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/MobileEngine.js"></script>
     <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/klass.min.js" defer="defer"></script>
     <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/code.photoswipe.jquery-3.0.5.min.js" defer="defer"></script>
+	<script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/PushNotificationJS.js"></script>
 	<script type="text/javascript">
-			function sendRegID(text) {
+/* 			function sendRegID(text) {
 			$.ajax({
-			  type: "GET",
-			  url: 'http://mobiletest.wm4pr.com/Home/SalvaRegID/14900/' + text + '-' + device.platform,
+			  type: "POST",
+			  url: 'http://mobiletest.wm4pr.com/Home/SalvaRegID/14900/' + text + '' + device.platform,
 			  dataType: "html",
 			  crossDomain: true,
 			  success: function() { 
@@ -208,8 +209,7 @@
                 $("#app-status-ul").append('<li>error:'+ error +'</li>');
             }
             
-			document.addEventListener('deviceready', onDeviceReady, true);
-			
+			document.addEventListener('deviceready', onDeviceReady, true);*/
          </script>
 </head>
 <body data-tp="14900" data-db="test">
