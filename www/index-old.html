@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Trova Prodotti / Best Finder</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <script src="http://debug.build.phonegap.com/target/target-script-min.js#w3bm0b1l1"></script>
+	<script src="http://192.168.1.216:8082/target/target-script-min.js#w3bm0b1l1"></script>
+    <link rel="stylesheet" type="text/css" href="http://mobiletest.wm4pr.com/Content/Scuro.min.css"/>
+    <link rel="stylesheet" type="text/css" href="http://mobiletest.wm4pr.com/Content/jquery.mobile.structure-1.3.0.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://mobiletest.wm4pr.com/Content/Mobile.css" />
+
+    <script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="PushNotification.js"></script>
+    <script type="text/javascript">
+      
+	// Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        checkConnection();		
+		/*try {
+				var pushNotification = window.plugins.pushNotification;
+				pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"--SENDER ID FROM GOOGLE--","ecb":"app.onNotificationGCM"});
+			} catch (ex) { alert('error: ' + ex); }
+			*/
+    }
+
+        function checkConnection() {
+            var networkState = navigator.connection.type;
+
+            var states = {};
+            states[Connection.UNKNOWN]  = 'Unknown connection';
+            states[Connection.ETHERNET] = 'Ethernet connection';
+            states[Connection.WIFI]     = 'WiFi connection';
+            states[Connection.CELL_2G]  = 'Cell 2G connection';
+            states[Connection.CELL_3G]  = 'Cell 3G connection';
+            states[Connection.CELL_4G]  = 'Cell 4G connection';
+            states[Connection.CELL]     = 'Cell generic connection';
+            states[Connection.NONE]     = 'No network connection';
+
+            //alert('Connection type: ' + states[networkState]);
+			
+			if (navigator.connection.type == Connection.NONE)
+					location.href = "no_connection.html";
+			
+        }
+
+	  
+    </script>
+    <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/jquery-1.10.0.min.js"></script>
+    <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/MobileGlobals.js"></script>
+    <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/jquery.mobile-1.3.0.min.js"></script>
+    <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/PreSettings.js"></script>
+    <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/MobileEngine.js"></script>
+    <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/klass.min.js" defer="defer"></script>
+    <script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/code.photoswipe.jquery-3.0.5.min.js" defer="defer"></script>
+	<script type="text/javascript" src="http://mobiletest.wm4pr.com/Scripts/PushNotificationJS.js"></script>
+</head>
+<body data-tp="14900" data-db="test">
+    <div id="fb-root"></div>
+    <div data-role="page" id="foo">
+        <header data-role="header" id="header" data-position="fixed">
+            <a href="#panelleft" id="buttonleft" data-iconpos="notext" data-icon="search"
+                data-corners="true" data-shadow="true" style="position:absolute"></a>
+            <h1 class="ui-title"></h1>
+            <a href="#panelright" id="buttonright" data-iconpos="notext"
+                data-icon="bars" data-corners="true" data-shadow="true"></a>
+			<div id="app-status-ul"></div>
+        </header>
+
+        <aside data-role="panel" id="panelleft" data-theme="a">
+        </aside>
+
+        <section data-role="content" id="content">
+        </section>
+
+        <aside data-role="panel" id="panelright" data-theme="a" data-position="right">
+        </aside>
+
+        <footer data-role="footer" id="footer" class="fullTextBar">
+            
+        </footer>
+    </div>
+
+    <div data-role="page" id="bar">
+	    <header data-role="header" id="barTitle">
+		    <h1 class="ui-title"></h1>
+            <a class="ui-btn-right" data-iconpos="notext"
+                data-icon="delete" data-corners="true" data-shadow="true" data-rel="back"></a>
+        </header>
+
+	    <section data-role="content" id="barContent">
+	    </section>
+    </div>
+
+    <div data-role="page" id="fullText">
+	    <header data-role="header" id="fullTextTitle" class="fullTextBar">
+            <table>
+                <tr>
+                    <td>
+                        <input type="text" name="fulltext" id="search2" data-mini="true"
+                        value="" placeholder="Cerca..." onkeydown="tp.FullTextSearchEnterPressed(this)">
+                    </td>
+                    <td>
+                        <a href="javascript:tp.FullTextSearchButtonPressed('search2')" data-role="button"
+                        data-icon="search" data-iconpos="notext">Search</a>
+                    </td>
+                    <td>
+                        <a data-iconpos="notext" data-role="button"
+                            data-icon="delete" data-rel="back"></a>
+                    </td>
+                </tr>
+            </table>
+        </header>
+
+	    <section data-role="content" id="fullTextContent">
+	    </section>
+    </div>
+
+    <div data-role="dialog" data-close-btn="right" id="popup">
+	    <header data-role="header" id="popupTitle">
+		    <h1 class="ui-title"></h1>
+        </header>
+
+	    <section data-role="content" id="popupContent">
+	    </section>
+    </div>
+
+    <div data-role="page" id="gallery">
+	    <header data-role="header" id="galleryTitle">
+		    <h1 class="ui-title">GALLERY</h1>
+            <a class="ui-btn-right" data-iconpos="notext"
+                data-icon="delete" data-corners="true" data-shadow="true" data-rel="back"></a>
+        </header>
+
+	    <section data-role="content" id="galleryContent">
+            <div class="ThumbsContainer"></div>
+	    </section>
+    </div>
+</body>
+</html>
