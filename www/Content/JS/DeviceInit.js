@@ -1,4 +1,4 @@
-﻿/// <reference path="Z:\SimoVinci_HOME\Documenti\Development\DotNET\TP_App\TP_App\Scripts/jquery-2.1.1.js" />
+﻿/// <reference path="Z:\SimoVinci_HOME\Documenti\Development\DotNET\TP_App\TP_App\Scripts/jquery-1.10.2.min.js" />
 /// <reference path="Z:\SimoVinci_HOME\Documenti\Development\DotNET\TP_App\TP_App\Scripts/MobileEngine-2.0.0.js" />
 
 /** Istanza di TP_MobileEngine */
@@ -13,12 +13,22 @@ function DeviceInitializator() {
   var gapReady = $.Deferred();
   var jqmReady = $.Deferred();
 
+  var tpID;
+  var domain;
+
+  if(onDevice != undefined)
+    gapReady.resolve();
+
 
   document.addEventListener("deviceReady", function () {
     gapReady.resolve();
   }, false);
 
   $(document).one("mobileinit", function () {
+    $(function () {
+      tpID = getTpID();
+      domain = getDomain();
+    });
     jqmReady.resolve();
   });
 
@@ -32,24 +42,15 @@ function DeviceInitializator() {
     $.mobile.pushStateEnabled = false;  // raccomandato da jquery mobile (uso con PhoneGAP)
     // *******
 
-    var tp = new TP_MobileEngine();
-    var pushManager = new PushManager(tp.TpID(), tp.Domain());
-
-    var appID = pushManager.getAppID(tp.TpID());
-    try {
+    if (onDevice != undefined) {
+      pushManager = new PushManager(tpID, domain);
+      var appID = pushManager.getAppID(tpID);
       pushNotification = window.plugins.pushNotification;
       if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos')
         pushNotification.register(successHandler, errorHandler, { "senderID": appID, "ecb": "pushManager.onNotification" });		// required!
-      else 
+      else
         pushNotification.register(tokenHandler, errorHandler, { "badge": "true", "sound": "true", "alert": "true", "ecb": "pushManager.onNotificationAPN" });	// required!
     }
-    catch (err) {
-
-      console.log(err);
-    }
-
-
-
   }).fail(function () {
     alert("PORCOD_O");
     // no connection
@@ -88,6 +89,32 @@ function DeviceInitializator() {
     //$("#app-status-ul").append('<li>error:'+ error +'</li>');
     //alert("errore");
     alert(error);
+  }
+
+  function getTpID() {
+    /** Controllo l'id del TP tradotto nella memoria local **/
+    window.localStorage.setItem("TpId", $(document.body).data("tp"));
+    if (window.localStorage.getItem("idLingua") != null) {
+      if (window.localStorage.getItem("idLingua") != window.localStorage.getItem("TpId")) {
+        return window.localStorage.getItem("idLingua");
+      }
+      else {
+        return window.localStorage.getItem("TpId");
+      }
+    }
+    else {
+      return window.localStorage.getItem("TpId");
+    }
+  }
+
+
+  function getDomain() {
+    if ($(document.body).data("db") == "prod")
+      return "http://mobile.wm4pr.com";
+    else if ($(document.body).data("db") == "test")
+      return "http://mobiletest.wm4pr.com";
+    else // debugging da localhost
+      return "";
   }
 
 }
