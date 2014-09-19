@@ -15,7 +15,7 @@ function DeviceInitializator() {
   var domain;
 
   // se nn siamo sul telefono risolvo l'evento gapReady
-  if (typeof onDevice !== 'undefined')
+  if (typeof onDevice === 'undefined')
     gapReady.resolve();
 
   document.addEventListener("deviceReady", function () {
