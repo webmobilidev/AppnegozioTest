@@ -14,7 +14,9 @@
 	<gap:plugin name="com.phonegap.plugins.pushplugin" />
 	<gap:plugin name="org.apache.cordova.core.vibration" />
 	<gap:plugin name="org.apache.cordova.core.dialogs" />
-	
+	<gap:config-file platform="android" parent="/manifest">
+		<application android:debuggable="true" />
+	</gap:config-file>
 	<feature name="PushPlugin">
 		<param name="ios-package" value="PushPlugin" />
 	</feature>
