@@ -15,12 +15,12 @@ function DeviceInitializator() {
   var domain;
 
   // se nn siamo sul telefono risolvo l'evento gapReady
-  //if (typeof onDevice !== 'undefined')
-  //  gapReady.resolve();
+  if (typeof onDevice !== 'undefined')
+    gapReady.resolve();
 
-  //document.addEventListener("deviceReady", function () {
-  //  gapReady.resolve();
-  //}, false);
+  document.addEventListener("deviceReady", function () {
+    gapReady.resolve();
+  }, false);
 
 
   $(document).one("mobileinit", function () {
@@ -35,12 +35,6 @@ function DeviceInitializator() {
       tpID = getTpID();
       domain = getDomain();
       jqmReady.resolve();
-      if (typeof onDevice !== 'undefined')
-        gapReady.resolve();
-
-      document.addEventListener("deviceReady", function () {
-        gapReady.resolve();
-      }, false);
     });
   });
 
