@@ -1,14 +1,12 @@
 ﻿/// <reference path="Z:\SimoVinci_HOME\Documenti\Development\DotNET\TP_App\TP_App\Scripts/jquery-1.10.2.min.js" />
-/// <reference path="Z:\SimoVinci_HOME\Documenti\Development\DotNET\TP_App\TP_App\Scripts/MobileEngine-2.0.0.js" />
 
-/** Istanza di TP_MobileEngine */
-var tp;
 /** Istanza di PushManager */
 var pushManager;
 
 
 /** Si occupa delle configurazioni e delle inizializzazioni da fare appena avviato il device */
 function DeviceInitializator() {
+  checkConnection();  // se non ho la connessione fallback
 
   var gapReady = $.Deferred();
   var jqmReady = $.Deferred();
@@ -16,25 +14,16 @@ function DeviceInitializator() {
   var tpID;
   var domain;
 
-  if(onDevice != undefined)
-    gapReady.resolve();
+  // se nn siamo sul telefono risolvo l'evento gapReady
+  //if (typeof onDevice !== 'undefined')
+  //  gapReady.resolve();
 
+  //document.addEventListener("deviceReady", function () {
+  //  gapReady.resolve();
+  //}, false);
 
-  document.addEventListener("deviceReady", function () {
-    gapReady.resolve();
-  }, false);
 
   $(document).one("mobileinit", function () {
-    $(function () {
-      tpID = getTpID();
-      domain = getDomain();
-    });
-    jqmReady.resolve();
-  });
-
-
-  $.when(gapReady, jqmReady).then(function () {
-
     //***** PRE-SETTINGS di JQM
     //Make your jQuery Mobile framework configuration changes here!
     $.support.cors = true;  // necessario per il funzionamento di PhoneGap
@@ -42,7 +31,23 @@ function DeviceInitializator() {
     $.mobile.pushStateEnabled = false;  // raccomandato da jquery mobile (uso con PhoneGAP)
     // *******
 
-    if (onDevice != undefined) {
+    $(function () {
+      tpID = getTpID();
+      domain = getDomain();
+      jqmReady.resolve();
+      if (typeof onDevice !== 'undefined')
+        gapReady.resolve();
+
+      document.addEventListener("deviceReady", function () {
+        gapReady.resolve();
+      }, false);
+    });
+  });
+
+  // deviceReady deve venire prima di mobileInit (da docs)
+  $.when(gapReady, jqmReady).then(function () {
+
+    if (typeof onDevice !== 'undefined') {
       pushManager = new PushManager(tpID, domain);
       var appID = pushManager.getAppID(tpID);
       pushNotification = window.plugins.pushNotification;
@@ -52,23 +57,7 @@ function DeviceInitializator() {
         pushNotification.register(tokenHandler, errorHandler, { "badge": "true", "sound": "true", "alert": "true", "ecb": "pushManager.onNotificationAPN" });	// required!
     }
   }).fail(function () {
-    alert("PORCOD_O");
-    // no connection
-    var networkState = navigator.connection.type;
-
-    var states = {};
-    states[Connection.UNKNOWN] = 'Unknown connection';
-    states[Connection.ETHERNET] = 'Ethernet connection';
-    states[Connection.WIFI] = 'WiFi connection';
-    states[Connection.CELL_2G] = 'Cell 2G connection';
-    states[Connection.CELL_3G] = 'Cell 3G connection';
-    states[Connection.CELL_4G] = 'Cell 4G connection';
-    states[Connection.CELL] = 'Cell generic connection';
-    states[Connection.NONE] = 'No network connection';
-
-    if (navigator.connection.type == Connection.NONE)
-      location.href = "no_connection.html";
-
+    alert("Qualcosa non va codroipo ornando campa");
   });
 
 
@@ -81,8 +70,7 @@ function DeviceInitializator() {
   }
 
   function successHandler(result) {
-    //$("#app-status-ul").append('<li>success:'+ result +'</li>');
-    //alert("viva dio");
+    
   }
 
   function errorHandler(error) {
@@ -115,6 +103,31 @@ function DeviceInitializator() {
       return "http://mobiletest.wm4pr.com";
     else // debugging da localhost
       return "";
+  }
+
+  /**
+  * Se ci troviamo sul device verifica la connettività,
+  * in caso negativo redirige alla pagina di cortesia
+  */
+  function checkConnection() {
+    if (typeof onDevice !== 'undefined') {
+
+      // se lo script cordova.js e' incluso
+      if (typeof Connection !== 'undefined') {
+        if (navigator.connection.type == Connection.NONE)
+          location.href = "no_connection.html";
+      }
+
+      //var states = {};
+      //states[Connection.UNKNOWN] = 'Unknown connection';
+      //states[Connection.ETHERNET] = 'Ethernet connection';
+      //states[Connection.WIFI] = 'WiFi connection';
+      //states[Connection.CELL_2G] = 'Cell 2G connection';
+      //states[Connection.CELL_3G] = 'Cell 3G connection';
+      //states[Connection.CELL_4G] = 'Cell 4G connection';
+      //states[Connection.CELL] = 'Cell generic connection';
+      //states[Connection.NONE] = 'No network connection';
+    }
   }
 
 }
