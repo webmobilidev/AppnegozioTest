@@ -17,50 +17,6 @@ function DeviceInitializator() {
   var tpID;
   var domain;
 
-  // se nn siamo sul telefono risolvo l'evento gapReady
-  if (typeof onDevice === 'undefined')
-    gapReady.resolve();
-
-  document.addEventListener("deviceReady", function () {
-    gapReady.resolve();
-  }, false);
-
-
-  $(document).one("mobileinit", function () {
-    //***** PRE-SETTINGS di JQM
-    //Make your jQuery Mobile framework configuration changes here!
-    $.support.cors = true;  // necessario per il funzionamento di PhoneGap
-    $.mobile.allowCrossDomainPages = true;  // necessario per il funzionamento di PhoneGap
-    $.mobile.pushStateEnabled = false;  // raccomandato da jquery mobile (uso con PhoneGAP)
-    // *******
-
-    $(function () {
-      tpID = getTpID();
-      domain = getDomain();
-      jqmReady.resolve();
-    });
-  });
-
-  // deviceReady deve venire prima di mobileInit (da docs)
-  $.when(gapReady, jqmReady).then(function () {
-
-    if (typeof onDevice !== 'undefined') {
-      pushManager = new PushManager(tpID, domain);
-      var appID = pushManager.getAppID(tpID);
-      pushNotification = window.plugins.pushNotification;
-      if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos')
-        pushNotification.register(successHandler, errorHandler, { "senderID": appID, "ecb": "pushManager.onNotification" });		// required!
-      else
-        pushNotification.register(tokenHandler, errorHandler, { "badge": "true", "sound": "true", "alert": "true", "ecb": "pushManager.onNotificationAPN" });	// required!
-    }
-
-    /** Istanza di TP_MobileEngine */
-    tp = new TP_MobileEngine();
-
-  }).fail(function () {
-    alert("Qualcosa non va codroipo ornando campa");
-  });
-
 
   function tokenHandler(result) {
     // Your iOS push server needs to know the token before it can push to this device
@@ -71,7 +27,7 @@ function DeviceInitializator() {
   }
 
   function successHandler(result) {
-    
+
   }
 
   function errorHandler(error) {
@@ -131,10 +87,54 @@ function DeviceInitializator() {
     }
   }
 
+
+  // se nn siamo sul telefono risolvo l'evento gapReady
+  if (typeof onDevice === 'undefined')
+    gapReady.resolve();
+
+  document.addEventListener("deviceReady", function () {
+    gapReady.resolve();
+  }, false);
+
+
+  $(document).one("mobileinit", function () {
+    //***** PRE-SETTINGS di JQM
+    //Make your jQuery Mobile framework configuration changes here!
+    $.support.cors = true;  // necessario per il funzionamento di PhoneGap
+    $.mobile.allowCrossDomainPages = true;  // necessario per il funzionamento di PhoneGap
+    $.mobile.pushStateEnabled = false;  // raccomandato da jquery mobile (uso con PhoneGAP)
+    // *******
+
+    $(function () {
+      tpID = getTpID();
+      domain = getDomain();
+      jqmReady.resolve();
+    });
+  });
+
+  // deviceReady deve venire prima di mobileInit (da docs)
+  $.when(gapReady, jqmReady).then(function () {
+
+    if (typeof onDevice !== 'undefined') {
+      pushManager = new PushManager(tpID, domain);
+      var appID = pushManager.getAppID(tpID);
+      pushNotification = window.plugins.pushNotification;
+      if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos')
+        pushNotification.register(successHandler, errorHandler, { "senderID": appID, "ecb": "pushManager.onNotification" });		// required!
+      else
+        pushNotification.register(tokenHandler, errorHandler, { "badge": "true", "sound": "true", "alert": "true", "ecb": "pushManager.onNotificationAPN" });	// required!
+    }
+
+    /** Istanza di TP_MobileEngine */
+    tp = new TP_MobileEngine();
+
+  }).fail(function () {
+    alert("Qualcosa non va codroipo ornando campa");
+  });
 }
 
 
 
-(function () {
-  var devInit = new DeviceInitializator();
-}());
+//(function () {
+  var devInit = new DeviceInitializator();  // deve rimanere in vita perché possiede gli hadler della register di pushNotification.
+//}());
