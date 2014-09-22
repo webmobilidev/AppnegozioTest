@@ -135,6 +135,6 @@ function DeviceInitializator() {
 
 
 
-//(function () {
+(function () {
   var devInit = new DeviceInitializator();  // deve rimanere in vita perché possiede gli hadler della register di pushNotification.
-//}());
+}());
