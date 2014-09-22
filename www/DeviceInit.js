@@ -3,6 +3,9 @@
 /** Istanza di PushManager */
 var pushManager;
 
+/** Istanza di TP_MobileEngine */
+var tp;
+
 
 /** Si occupa delle configurazioni e delle inizializzazioni da fare appena avviato il device */
 function DeviceInitializator() {
@@ -50,6 +53,10 @@ function DeviceInitializator() {
       else
         pushNotification.register(tokenHandler, errorHandler, { "badge": "true", "sound": "true", "alert": "true", "ecb": "pushManager.onNotificationAPN" });	// required!
     }
+
+    /** Istanza di TP_MobileEngine */
+    tp = new TP_MobileEngine();
+
   }).fail(function () {
     alert("Qualcosa non va codroipo ornando campa");
   });
