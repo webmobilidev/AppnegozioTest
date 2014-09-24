@@ -9,13 +9,23 @@ var tp;
 
 /** Si occupa delle configurazioni e delle inizializzazioni da fare appena avviato il device */
 function DeviceInitializator() {
-  checkConnection();  // se non ho la connessione fallback
+  
 
-  var gapReady = $.Deferred();
-  var jqmReady = $.Deferred();
+  var gapReady;
+  var jqmReady;
 
   var tpID;
   var domain;
+
+  try {
+    gapReady = $.Deferred();
+    jqmReady = $.Deferred();
+  } catch (e) {
+    /*
+    In caso di connessione assente non ho jQuery e queste assegnazioni possono andare in errore.
+    Il caso di connessione mancata viene gestito all'interno dell'onDeviceReady più avanti.
+    */
+  }
 
 
   function tokenHandler(result) {
@@ -93,6 +103,7 @@ function DeviceInitializator() {
     gapReady.resolve();
 
   document.addEventListener("deviceReady", function () {
+    checkConnection();  // se non ho la connessione fallback
     gapReady.resolve();
   }, false);
 
@@ -136,5 +147,5 @@ function DeviceInitializator() {
 
 
 (function () {
-  var devInit = new DeviceInitializator();  // deve rimanere in vita perché possiede gli hadler della register di pushNotification.
+  var devInit = new DeviceInitializator();
 }());
