@@ -48,6 +48,11 @@
 		<false/>
 	</gap:config-file>
 	
+	<gap:config-file platform="android" parent="/manifest">
+     		<application android:debuggable="true" />
+	</gap:config-file>
+	
+	
     <icon src="iconTest.png" />
     <icon gap:density="ldpi" gap:platform="android" src="res/icon/android/icon-36-ldpi.png" />
     <icon gap:density="mdpi" gap:platform="android" src="res/icon/android/icon-48-mdpi.png" />
