@@ -49,7 +49,7 @@
 	</gap:config-file>
 	
 	<gap:config-file platform="android" parent="/manifest">
-     		<application android:debuggable="true" />
+     		<application android:debuggable="true"></application>
 	</gap:config-file>
 	
 	
