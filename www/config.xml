@@ -48,9 +48,6 @@
 		<false/>
 	</gap:config-file>
 	
-	<gap:config-file platform="android" parent="/manifest">
-     		<application debuggable="true" />
-	</gap:config-file>
 	
 	
     <icon src="iconTest.png" />
