@@ -14,7 +14,7 @@
 	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.4.0"/>
 	<gap:plugin name="org.apache.cordova.core.vibration" />
 	<gap:plugin name="org.apache.cordova.core.dialogs" />
-	<gap:plugin name="org.apache.cordova.media" />
+	<!--<gap:plugin name="org.apache.cordova.media" />-->
 	
 	<feature name="PushPlugin">
 		<param name="ios-package" value="PushPlugin" />
