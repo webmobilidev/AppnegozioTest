@@ -32,7 +32,7 @@ function DeviceInitializator() {
     // Your iOS push server needs to know the token before it can push to this device
     // here is where you might want to send it the token for later use.
     var reg = window.localStorage.getItem("Registered");
-    if (reg != 1)
+    if (reg != result)
       pushManager.sendRegID(result, device.platform);
   }
 
