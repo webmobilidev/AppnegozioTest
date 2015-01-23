@@ -98,11 +98,11 @@ function DeviceInitializator() {
 	
 	//Plugin per clear cache
 	var success = function(status) {
-            alert('Message: ' + status);
+            console.log('Message: ' + status);
         }
 
 	var error = function(status) {
-            alert('Error: ' + status);
+            console.log('Error: ' + status);
         }
 
 	window.cache.clear( success, error );
