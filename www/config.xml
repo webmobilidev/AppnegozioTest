@@ -7,6 +7,8 @@
     <author email="webmobilidev@gmail.com" href="http://www.gpchannel.com">
         Global Product Channel
     </author>
+	
+	<gap:plugin name="com.sharinglabs.cordova.plugin.cache"  />
 	<gap:plugin name="org.apache.cordova.device" />
 	<gap:plugin name="org.apache.cordova.network-information" />
 	<gap:plugin name="org.apache.cordova.inappbrowser" />

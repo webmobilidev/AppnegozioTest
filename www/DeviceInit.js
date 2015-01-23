@@ -95,6 +95,18 @@ function DeviceInitializator() {
       //states[Connection.CELL] = 'Cell generic connection';
       //states[Connection.NONE] = 'No network connection';
     }
+	
+	//Plugin per clear cache
+	var success = function(status) {
+            alert('Message: ' + status);
+        }
+
+	var error = function(status) {
+            alert('Error: ' + status);
+        }
+
+	window.cache.clear( success, error );
+	
   }
 
 
